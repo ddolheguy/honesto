@@ -1,5 +1,6 @@
 import { combineEpics } from 'redux-observable';
+import authenticationEpic from './authenticationEpic';
 
-const epicRegistry = [] as any;
+const epicRegistry = [...authenticationEpic];
 
 export default combineEpics(...epicRegistry);
