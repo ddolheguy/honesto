@@ -2,11 +2,12 @@ import { ActionsObservable, Epic } from 'redux-observable';
 import { of } from 'rxjs';
 import { filter, mergeMap } from 'rxjs/operators';
 import { isActionOf } from 'typesafe-actions';
-import { setAuthToken } from '../../services/authenticationService';
+import { logout, setAuthToken } from '../../services/authenticationService';
 import historyService from '../../services/historyService';
 import {
   AuthenticateActions,
-  onAuthenticate
+  onAuthenticate,
+  onLogout
 } from '../actions/authenticationActions';
 
 export const onAuthenticateEpic: Epic = (
@@ -25,4 +26,20 @@ export const onAuthenticateEpic: Epic = (
     })
   );
 
-export default [onAuthenticateEpic];
+export const onLogoutEpic: Epic = (
+  action$: ActionsObservable<AuthenticateActions>
+) =>
+  action$.pipe(
+    filter(isActionOf(onLogout.request)),
+    mergeMap(() => {
+      try {
+        logout();
+        historyService.push('/login');
+        return of(onLogout.success());
+      } catch (err) {
+        return of(onLogout.failure(err));
+      }
+    })
+  );
+
+export default [onAuthenticateEpic, onLogoutEpic];

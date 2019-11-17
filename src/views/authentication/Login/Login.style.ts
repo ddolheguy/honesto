@@ -81,7 +81,7 @@ export const Logo = styled.img.attrs({
 
 export const Line = styled.div`
   align-self: center;
-  border-top: 1px solid ${({ theme }) => theme.colours.lightGrey};
+  border-top: 1px solid ${({ theme }) => theme.colours.grey};
   margin-bottom: 34px;
   width: 190px;
 `;

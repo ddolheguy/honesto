@@ -17,7 +17,9 @@ export const GlobalStyle = createGlobalStyle`
 export const colours = {
   purple: '#AB61E5',
   black: '#031323',
-  lightGrey: '#D9DCDE',
+  green: '#57bba1',
+  grey: '#D9DCDE',
+  lightGrey: '#F2F3F4',
   white: '#FFFFFF'
 };
 

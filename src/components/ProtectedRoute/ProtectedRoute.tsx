@@ -5,7 +5,8 @@ import { isAuthenticated } from '../../services/authenticationService';
 const ProtectedRoute: React.FC<any> = props => {
   const { ...rest } = props;
 
-  if (!isAuthenticated()) {
+  const test = isAuthenticated();
+  if (!test) {
     return <Redirect to='/login' />;
   }
 

@@ -8,6 +8,7 @@ import { configureStore } from './store';
 import theme, { GlobalStyle } from './theme/theme';
 
 import Login from './views/authentication/Login/Login';
+import Portal from './views/portal/Portal/Portal';
 
 const store = configureStore();
 
@@ -18,7 +19,8 @@ const App: React.FC = () => {
         <Router history={historyService}>
           <GlobalStyle />
           <Switch>
-            <Route path='/login' component={Login} />
+            <Route path='/login' exact={true} component={Login} />
+            <ProtectedRoute path='/' exact={true} component={Portal} />
             <Redirect to='/' />
           </Switch>
         </Router>

@@ -6,4 +6,12 @@ export const onAuthenticate = createAsyncAction(
   'authenticate/AUTHENTICATE_FAILURE'
 )<void, void, Error>();
 
-export type AuthenticateActions = ActionType<typeof onAuthenticate>;
+export const onLogout = createAsyncAction(
+  'authenticate/LOGOUT',
+  'authenticate/LOGOUT_SUCCESS',
+  'authenticate/LOGOUT_FAILURE'
+)<void, void, Error>();
+
+export type AuthenticateActions = ActionType<
+  typeof onAuthenticate | typeof onLogout
+>;
