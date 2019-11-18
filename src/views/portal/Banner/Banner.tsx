@@ -42,7 +42,7 @@ const Banner: React.FC<Props> = ({ history, match, onLogout }) => {
           </S.Month>
         </S.FeedbackCycle>
         <S.Profile>
-          <S.Avatar />
+          <S.StyledAvatar />
           <div>
             <S.Name>Jane Smith</S.Name>
             <S.LogoutLink onClick={() => onLogout()}>LOGOUT</S.LogoutLink>

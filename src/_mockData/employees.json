@@ -2,26 +2,31 @@
   {
     "firstName": "Chris",
     "lastName": "Johnson",
-    "avatarUrl": "/images/chris.png"
+    "avatarUrl": "/images/chris.png",
+    "completed": false
   },
   {
     "firstName": "Nico",
     "lastName": "Peroz",
-    "avatarUrl": "/images/nico.png"
+    "avatarUrl": "/images/nico.png",
+    "completed": false
   },
   {
     "firstName": "Peter",
     "lastName": "Moon",
-    "avatarUrl": "/images/peter.png"
+    "avatarUrl": "/images/peter.png",
+    "completed": false
   },
   {
     "firstName": "Denis",
     "lastName": "Denison",
-    "avatarUrl": "/images/denis.png"
+    "avatarUrl": "/images/denis.png",
+    "completed": false
   },
   {
     "firstName": "Paul",
     "lastName": "Cater",
-    "avatarUrl": "/images/paul.png"
+    "avatarUrl": "/images/paul.png",
+    "completed": false
   }
 ]

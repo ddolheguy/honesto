@@ -13,4 +13,16 @@ export const H1 = styled(TextBase)`
   line-height: 28px;
 `;
 
+export const H2 = styled(TextBase)`
+  font-size: 22px;
+  line-height: 26px;
+`;
+
+export const FieldLabel = styled(TextBase)`
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+`;
+
 export const Body = styled(TextBase)``;

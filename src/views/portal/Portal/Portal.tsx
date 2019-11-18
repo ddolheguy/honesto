@@ -9,11 +9,17 @@ const Portal: React.FC = () => {
   return (
     <S.Container>
       <Banner />
-      <Switch>
-        <Route path='/share-feedback' exact={true} component={ShareFeedback} />
-        <Route path='/my-feedback' exact={true} component={MyFeedback} />
-        <Redirect to='/share-feedback' />
-      </Switch>
+      <S.Content>
+        <Switch>
+          <Route
+            path='/share-feedback'
+            exact={true}
+            component={ShareFeedback}
+          />
+          <Route path='/my-feedback' exact={true} component={MyFeedback} />
+          <Redirect to='/share-feedback' />
+        </Switch>
+      </S.Content>
     </S.Container>
   );
 };

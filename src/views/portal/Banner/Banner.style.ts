@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Typography } from '../../../components';
+import { Avatar, Typography } from '../../../components';
 
 export const Container = styled.div`
   align-items: center;
@@ -48,12 +48,9 @@ export const Profile = styled.div`
   height: 100%;
 `;
 
-export const Avatar = styled.div`
-  background: url('/images/avatar.png') no-repeat;
-  height: 58px;
-  padding-right: 17px;
-  width: 58px;
-`;
+export const StyledAvatar = styled(Avatar.Primary).attrs({
+  src: '/images/avatar.png'
+})``;
 
 export const Name = styled(Typography.Body)``;
 
