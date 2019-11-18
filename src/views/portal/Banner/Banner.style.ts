@@ -9,13 +9,13 @@ export const Container = styled.div`
   justify-content: space-between;
   height: 75px;
   padding-left: 130px;
-  width: 100%;
   white-space: nowrap;
   user-select: none;
 `;
 
 export const Title = styled(Typography.H1)`
   padding-right: 66px;
+  font-weight: 600;
 `;
 
 export const Row = styled.div`

@@ -6,7 +6,7 @@ const Footer: React.FC<Props> = props => {
     <S.Container>
       <S.TheoremLogo />
       <S.CopyrightText>
-        Copyright © 2018 Theorem, LLC. All Rrights Reserved.
+        Copyright © 2018 <span>Theorem</span>, LLC. All Rrights Reserved.
       </S.CopyrightText>
     </S.Container>
   );

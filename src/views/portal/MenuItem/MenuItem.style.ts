@@ -18,11 +18,13 @@ export const Container = styled.div<ContainerProps>`
   margin: 0 35px;
 `;
 
-export const Title = styled(Typography.Body)``;
+export const Title = styled(Typography.Body)`
+  padding-top: 10px;
+`;
 
 export const Notification = styled.div`
   position: absolute;
-  margin-top: -13px;
+  margin-top: -7px;
   right: -20px;
   background-color: ${({ theme }) => theme.colours.purple};
   border-radius: 8px;

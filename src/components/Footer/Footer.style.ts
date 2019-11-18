@@ -25,5 +25,10 @@ export const TheoremLogo = styled.img.attrs({
 export const CopyrightText = styled(Body)`
   color: ${({ theme }) => theme.colours.white};
   font-size: 12px;
+  font-weight: 300;
   line-height: 18px;
+
+  span {
+    font-weight: 500;
+  }
 `;

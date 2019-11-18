@@ -20,7 +20,7 @@ const App: React.FC = () => {
           <GlobalStyle />
           <Switch>
             <Route path='/login' exact={true} component={Login} />
-            <ProtectedRoute path='/' exact={true} component={Portal} />
+            <ProtectedRoute path='/' component={Portal} />
             <Redirect to='/' />
           </Switch>
         </Router>

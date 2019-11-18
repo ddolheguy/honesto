@@ -4,6 +4,7 @@ const TextBase = styled.div`
   color: ${({ theme }) => theme.colours.black};
   font-family: ${({ theme }) => theme.fonts.regular};
   font-size: 16px;
+  font-weight: 500;
   line-height: 19px;
 `;
 

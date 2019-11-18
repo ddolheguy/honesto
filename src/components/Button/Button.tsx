@@ -6,6 +6,7 @@ export const Primary = styled.div`
   color: ${({ theme }) => theme.colours.white};
   cursor: pointer;
   font-family: ${({ theme }) => theme.fonts.regular};
+  font-weight: 400;
   padding: 11px 15px;
   text-align: center;
 `;

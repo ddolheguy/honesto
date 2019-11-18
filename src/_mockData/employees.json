@@ -1,0 +1,27 @@
+[
+  {
+    "firstName": "Chris",
+    "lastName": "Johnson",
+    "avatarUrl": "/images/chris.png"
+  },
+  {
+    "firstName": "Nico",
+    "lastName": "Peroz",
+    "avatarUrl": "/images/nico.png"
+  },
+  {
+    "firstName": "Peter",
+    "lastName": "Moon",
+    "avatarUrl": "/images/peter.png"
+  },
+  {
+    "firstName": "Denis",
+    "lastName": "Denison",
+    "avatarUrl": "/images/denis.png"
+  },
+  {
+    "firstName": "Paul",
+    "lastName": "Cater",
+    "avatarUrl": "/images/paul.png"
+  }
+]

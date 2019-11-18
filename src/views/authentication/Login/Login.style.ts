@@ -88,4 +88,5 @@ export const Line = styled.div`
 
 export const Title = styled(Typography.H1)`
   margin-bottom: 40px;
+  font-weight: bold;
 `;
