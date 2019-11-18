@@ -33,7 +33,9 @@ const ShareFeedback: React.FC<Props> = ({
           <EmployeeRow
             key={index}
             employee={employee}
-            onClickEmployee={() => {}}
+            onClickEmployee={() => {
+              console.log('ss');
+            }}
           />
         ))}
       </S.EmployeeList>
