@@ -1,13 +1,8 @@
 export interface Employee {
-  id: string;
-  firstName: string;
-  lastName: string;
-  avatarUrl: string;
-  answers?: Answer[];
-  completed: boolean;
-}
-
-export interface Answer {
-  questionId: string;
-  answer: string;
+  readonly id: string;
+  readonly firstName: string;
+  readonly lastName: string;
+  readonly avatarUrl: string;
+  readonly inTeam: boolean;
+  readonly completed: boolean;
 }

@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
-import { Employee } from '../../../../types/employee';
-import { Button } from '../../../components';
-import { DeepReadonlyObject } from '../../../utils';
+import { Employee } from '../../../types/employee';
+import { DeepReadonlyObject } from '../../utils';
+import { Primary, Secondary } from '../Button/Button';
 import * as S from './EmployeeRow.style';
 
 const EmployeeRow: React.FC<Props> = ({ employee, onClickEmployee }) => {
@@ -12,11 +12,9 @@ const EmployeeRow: React.FC<Props> = ({ employee, onClickEmployee }) => {
         <S.Name>{`${employee.firstName} ${employee.lastName}`}</S.Name>
       </S.Group>
       {employee.completed ? (
-        <Button.Secondary onClick={onClickEmployee}>
-          View Submission
-        </Button.Secondary>
+        <Secondary onClick={onClickEmployee}>View Submission</Secondary>
       ) : (
-        <Button.Primary onClick={onClickEmployee}>Fill Out</Button.Primary>
+        <Primary onClick={onClickEmployee}>Fill Out</Primary>
       )}
     </S.Container>
   );

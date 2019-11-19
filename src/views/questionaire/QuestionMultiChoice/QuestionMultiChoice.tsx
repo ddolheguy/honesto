@@ -1,6 +1,5 @@
-import React, { memo } from 'react';
+import React, { memo, useMemo } from 'react';
 import { Question } from '../../../../types/question';
-import { DeepReadonlyObject } from '../../../utils';
 import * as S from './QuestionMultiChoice.style';
 
 const QuestionMultiChoice: React.FC<Props> = ({
@@ -8,15 +7,19 @@ const QuestionMultiChoice: React.FC<Props> = ({
   question,
   onAnswer
 }) => {
+  const answerValue = useMemo(
+    () => (answer ? parseInt(answer, 10) : undefined),
+    [answer]
+  );
   return (
     <S.Container>
       {question.options &&
         question.options.map((option, index) => (
           <S.Option
             key={index}
-            answered={answer === index}
+            answered={answerValue === index}
             dangerouslySetInnerHTML={{ __html: option }}
-            onClick={() => onAnswer(index + 1)}
+            onClick={() => onAnswer(`${index}`)}
           />
         ))}
     </S.Container>
@@ -24,9 +27,9 @@ const QuestionMultiChoice: React.FC<Props> = ({
 };
 
 type Props = {
-  answer?: number;
-  question: DeepReadonlyObject<Question>;
-  onAnswer: (answer: number) => void;
+  answer?: string;
+  question: Question;
+  onAnswer: (answer: string) => void;
 };
 
 export default memo(QuestionMultiChoice);

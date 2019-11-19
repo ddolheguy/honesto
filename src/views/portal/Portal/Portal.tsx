@@ -1,10 +1,12 @@
 import React, { memo, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Redirect, Route, Switch } from 'react-router';
+import { ROUTES } from '../../../config/routes';
 import * as Action from '../../../redux/actions/employeeActions';
 import MyFeedback from '../../myFeedback/MyFeedback/MyFeedback';
 import Questionaire from '../../questionaire/Questionaire/Questionaire';
 import ShareFeedback from '../../shareFeedback/ShareFeedback/ShareFeedback';
+import TeamFeedback from '../../teamFeedback/TeamFeedback/TeamFeedback';
 import Banner from '../Banner/Banner';
 import * as S from './Portal.style';
 
@@ -18,17 +20,26 @@ const Portal: React.FC<Props> = ({ onFetchEmplpyees }) => {
       <S.Content>
         <Switch>
           <Route
-            path='/share-feedback'
+            path={ROUTES.SHARE_FEEDBACK}
             exact={true}
             component={ShareFeedback}
           />
-          <Route path='/my-feedback' exact={true} component={MyFeedback} />
           <Route
-            path='/questions/:employeeId'
+            path={ROUTES.MY_FEEDBACK}
+            exact={true}
+            component={MyFeedback}
+          />
+          <Route
+            path={ROUTES.TEAM_FEEDBACK}
+            exact={true}
+            component={TeamFeedback}
+          />
+          <Route
+            path={ROUTES.EMPLOYEE_QUESTIONAIRE}
             exact={true}
             component={Questionaire}
           />
-          <Redirect to='/share-feedback' />
+          <Redirect to={ROUTES.SHARE_FEEDBACK} />
         </Switch>
       </S.Content>
     </S.Container>

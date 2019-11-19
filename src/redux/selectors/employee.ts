@@ -1,9 +1,13 @@
 import { createSelector } from 'reselect';
+import { Employee } from '../../../types/employee';
 import { RootState } from '../reducers/rootReducer';
 
 const employeeStateSelector = (state: RootState) => state.entities.employees;
 
 const propsSelector = (state: RootState, props: { employeeId: string }) =>
+  props;
+
+const feedbackTypeSelector = (state: RootState, props: { isTeam: boolean }) =>
   props;
 
 export const isLoadingSelector = createSelector(
@@ -13,12 +17,17 @@ export const isLoadingSelector = createSelector(
 
 export const employeeListSelector = createSelector(
   employeeStateSelector,
-  state => {
+  feedbackTypeSelector,
+  (state, { isTeam }) => {
     if (state.state !== 'SUCCESS') {
       return [];
     }
 
-    return state.data;
+    return (state.data as Employee[])
+      .filter(employee => employee.inTeam === isTeam)
+      .sort((a, b) =>
+        a.firstName > b.firstName ? 1 : b.firstName > a.firstName ? -1 : 0
+      );
   }
 );
 
@@ -30,6 +39,12 @@ export const employeeSelector = createSelector(
       return undefined;
     }
 
-    return employeeState.data.find(employee => employee.id === employeeId);
+    const employee = employeeState.data.find(
+      employee => employee.id === employeeId
+    );
+    if (!employee) {
+      return undefined;
+    }
+    return { ...employee } as Employee;
   }
 );

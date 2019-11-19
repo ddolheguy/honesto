@@ -1,6 +1,5 @@
 import React, { memo } from 'react';
 import { Employee } from '../../../../types/employee';
-import { DeepReadonlyObject } from '../../../utils';
 import * as S from './QuestionHeader.style';
 
 const QuestionHeader: React.FC<Props> = ({ employee, title }) => {
@@ -16,7 +15,7 @@ const QuestionHeader: React.FC<Props> = ({ employee, title }) => {
 };
 
 type Props = {
-  employee: DeepReadonlyObject<Employee>;
+  employee: Employee;
   title: string;
 };
 

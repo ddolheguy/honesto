@@ -4,7 +4,7 @@ import { Button } from '../../../components';
 import * as Actions from '../../../redux/actions/authenticationActions';
 import * as S from './Login.style';
 
-const Login: React.FC<Props> = ({ onAuthenticate }) => {
+export const Login: React.FC<Props> = ({ onAuthenticate }) => {
   return (
     <S.Container>
       <S.LoginContent>

@@ -1,9 +1,10 @@
 import React, { memo } from 'react';
-import { Button } from '../../../components';
+import { Button } from '..';
 import * as S from './ActionBar.style';
 
 const ActionBar: React.FC<Props> = ({
   canSkip = true,
+  canNext,
   currentQuestion,
   noOfQuestions,
   onPrevious,
@@ -13,22 +14,26 @@ const ActionBar: React.FC<Props> = ({
   // TODO: Link up the rating, hard coded for demo
   const rating = 3;
   const progress =
-    noOfQuestions > 0 ? (currentQuestion / noOfQuestions) * 100 : 0;
+    noOfQuestions > 0 ? ((currentQuestion + 1) / noOfQuestions) * 100 : 0;
+  const previousDisabled = currentQuestion === 0;
   return (
-    <>
+    <div>
       <S.Container>
-        <Button.Secondary disabled={currentQuestion === 0} onClick={onPrevious}>
+        <Button.Secondary
+          disabled={previousDisabled}
+          onClick={!previousDisabled ? onPrevious : undefined}
+        >
           Previous
         </Button.Secondary>
         {canSkip ? (
           <Button.Secondary onClick={onSkip}>Skip</Button.Secondary>
         ) : null}
-        <Button.Primary
-          disabled={currentQuestion === noOfQuestions}
-          onClick={onNext}
+        <Button.FormAction
+          disabled={!canNext || currentQuestion === noOfQuestions}
+          onClick={() => (canNext ? onNext() : undefined)}
         >
-          Next
-        </Button.Primary>
+          {noOfQuestions === currentQuestion + 1 ? 'Finish' : 'Next'}
+        </Button.FormAction>
       </S.Container>
 
       <S.ProgressBar progress={progress}>
@@ -38,7 +43,7 @@ const ActionBar: React.FC<Props> = ({
       <S.Footer>
         <S.QuestionsCompleted>
           QUESTIONS COMPLETED
-          <div>{`${currentQuestion}/${noOfQuestions}`}</div>
+          <div>{`${currentQuestion + 1}/${noOfQuestions}`}</div>
         </S.QuestionsCompleted>
         <div>
           {new Array(5).fill({}).map((_, index) => (
@@ -47,7 +52,7 @@ const ActionBar: React.FC<Props> = ({
           <S.FlagButton />
         </div>
       </S.Footer>
-    </>
+    </div>
   );
 };
 
@@ -55,6 +60,7 @@ type Props = {
   noOfQuestions: number;
   currentQuestion: number;
   canSkip?: boolean;
+  canNext: boolean;
   onPrevious: () => void;
   onSkip: () => void;
   onNext: () => void;

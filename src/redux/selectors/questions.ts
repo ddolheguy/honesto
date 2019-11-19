@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import { Question } from '../../../types/question';
 import { RootState } from '../reducers/rootReducer';
 
 const questionsStateSelector = (state: RootState) => state.entities.questions;
@@ -15,6 +16,6 @@ export const questionsListSelector = createSelector(
       return undefined;
     }
 
-    return state.data;
+    return state.data as Question[];
   }
 );

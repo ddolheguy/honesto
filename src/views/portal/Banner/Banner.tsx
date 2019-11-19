@@ -1,6 +1,7 @@
 import React, { memo } from 'react';
 import { connect } from 'react-redux';
 import { RouteComponentProps, withRouter } from 'react-router';
+import { ROUTES } from '../../../config/routes';
 import * as Actions from '../../../redux/actions/authenticationActions';
 import MenuItem from '../MenuItem/MenuItem';
 import * as S from './Banner.style';
@@ -14,23 +15,23 @@ const Banner: React.FC<Props> = ({ history, match, onLogout }) => {
           title='Share Feedback'
           isActive={true}
           notificationCount={2}
-          onItemClick={() => history.push('/share-feedback')}
+          onItemClick={() => history.push(ROUTES.SHARE_FEEDBACK)}
         />
         <MenuItem
           title='My Feedback'
           isActive={false}
           notificationCount={8}
-          onItemClick={() => history.push('/my-feedback')}
+          onItemClick={() => history.push(ROUTES.MY_FEEDBACK)}
         />
         <MenuItem
           title='Team Feedback'
           isActive={false}
-          onItemClick={() => history.push('/team-feedback')}
+          onItemClick={() => history.push(ROUTES.TEAM_FEEDBACK)}
         />
         <MenuItem
           title='Teams'
           isActive={false}
-          onItemClick={() => history.push('/teams')}
+          onItemClick={() => history.push(ROUTES.TEAMS)}
         />
       </S.Row>
 

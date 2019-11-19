@@ -1,9 +1,8 @@
 import { ActionsObservable, StateObservable } from 'redux-observable';
 import { toArray } from 'rxjs/operators';
+import { authStorageKey } from '../../services/authenticationService';
 import historyService from '../../services/historyService';
-import localStorageService, {
-  LocalStorageKey
-} from '../../services/localStorageService';
+import localStorageService from '../../services/localStorageService';
 import { onAuthenticate, onLogout } from '../actions/authenticationActions';
 import { onAuthenticateEpic, onLogoutEpic } from './authenticationEpic';
 
@@ -37,11 +36,9 @@ describe('onLogoutEpic', () => {
     const action$ = ActionsObservable.of(onLogout.request());
     historyService.push = jest.fn();
 
-    localStorageService.setItem(LocalStorageKey.AUTH_TOKEN, 'testtoken');
+    localStorageService.setItem(authStorageKey, 'testtoken');
 
-    expect(localStorageService.getItem(LocalStorageKey.AUTH_TOKEN)).toBe(
-      'testtoken'
-    );
+    expect(localStorageService.getItem(authStorageKey)).toBe('testtoken');
 
     const state$ = {} as StateObservable<{}>;
     onLogoutEpic(action$, state$, undefined)
@@ -49,9 +46,7 @@ describe('onLogoutEpic', () => {
       .subscribe(outputActions => {
         expect(outputActions).toHaveLength(1);
 
-        expect(
-          localStorageService.getItem(LocalStorageKey.AUTH_TOKEN)
-        ).toBeNull();
+        expect(localStorageService.getItem(authStorageKey)).toBeNull();
 
         expect((historyService.push as any).mock.calls).toEqual(
           expectedHistoryCall

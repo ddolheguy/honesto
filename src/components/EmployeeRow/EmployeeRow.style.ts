@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Avatar, Button, Typography } from '../../../components';
+import { Avatar, Button, Typography } from '..';
 
 export const Name = styled(Typography.H2)`
   color: #59636e;

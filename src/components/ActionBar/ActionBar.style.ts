@@ -1,11 +1,11 @@
 import styled from 'styled-components';
-import { Typography } from '../../../components';
+import { Typography } from '..';
 
 export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 36px 0 31px 0;
+  margin: 0 0 31px 0;
 `;
 
 export const Footer = styled.div`

@@ -1,23 +1,46 @@
 import React, { memo } from 'react';
 import { RouteComponentProps, withRouter } from 'react-router';
 import { Employee } from '../../../../types/employee';
-import { Question } from '../../../../types/question';
+import {
+  Answer,
+  Question,
+  SaveAnswerRequest
+} from '../../../../types/question';
 import { BackButton } from '../../../components';
-import { DeepReadonlyObject } from '../../../utils';
-import ActionBar from '../ActionBar/ActionBar';
+import ActionBar from '../../../components/ActionBar/ActionBar';
 import QuestionHeader from '../QuestionHeader/QuestionHeader';
 import QuestionMultiChoice from '../QuestionMultiChoice/QuestionMultiChoice';
 import QuestionRating from '../QuestionRating/QuestionRating';
 import QuestionText from '../QuestionText/QuestionText';
 import * as S from './SingleQuestion.style';
 
-const SingleQuestion: React.FC<Props> = ({
+export const SingleQuestion: React.FC<Props> = ({
+  answer,
   employee,
   history,
   question,
   noOfQuestions,
-  currentQuestion
+  currentQuestion,
+  onSaveAnswer,
+  onPrevious,
+  onNext
 }) => {
+  const saveAnswer = (skipped: boolean, answer?: string) => {
+    onSaveAnswer({
+      employeeId: employee.id,
+      answer: {
+        questionId: question.id,
+        skipped,
+        answer
+      }
+    });
+  };
+
+  const skipAnswer = () => {
+    saveAnswer(false, undefined);
+    onNext();
+  };
+
   return (
     <S.Container>
       <BackButton onBackClick={() => history.goBack()} />
@@ -25,43 +48,33 @@ const SingleQuestion: React.FC<Props> = ({
       <S.Content>
         {question.type === 'multipleChoice' ? (
           <QuestionMultiChoice
-            answer={0}
+            answer={answer ? answer.answer : undefined}
             question={question}
-            onAnswer={answer => {
-              console.log(answer);
-            }}
+            onAnswer={answer => saveAnswer(false, answer)}
           />
         ) : null}
         {question.type === 'rating' ? (
           <QuestionRating
-            answer={6}
+            answer={answer ? answer.answer : undefined}
             question={question}
-            onAnswer={answer => {
-              console.log(answer);
-            }}
+            onAnswer={answer => saveAnswer(false, answer)}
           />
         ) : null}
-        {question.type === 'rating' ? (
+        {question.type === 'text' ? (
           <QuestionText
-            answer={''}
+            answer={answer ? answer.answer : undefined}
             question={question}
-            onAnswer={answer => {
-              console.log(answer);
-            }}
+            onAnswer={answer => saveAnswer(false, answer)}
           />
         ) : null}
         <ActionBar
+          canSkip={question.type !== 'text'}
+          canNext={answer !== undefined}
           noOfQuestions={noOfQuestions}
           currentQuestion={currentQuestion}
-          onPrevious={() => {
-            console.log('ss');
-          }}
-          onSkip={() => {
-            console.log('ss');
-          }}
-          onNext={() => {
-            console.log('ss');
-          }}
+          onPrevious={onPrevious}
+          onSkip={() => skipAnswer()}
+          onNext={onNext}
         />
       </S.Content>
     </S.Container>
@@ -69,10 +82,14 @@ const SingleQuestion: React.FC<Props> = ({
 };
 
 type Props = RouteComponentProps & {
+  answer?: Answer;
   noOfQuestions: number;
   currentQuestion: number;
-  employee: DeepReadonlyObject<Employee>;
-  question: DeepReadonlyObject<Question>;
+  employee: Employee;
+  question: Question;
+  onSaveAnswer: (request: SaveAnswerRequest) => void;
+  onPrevious: () => void;
+  onNext: () => void;
 };
 
 export default memo(withRouter(SingleQuestion));

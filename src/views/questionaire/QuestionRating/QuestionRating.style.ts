@@ -4,6 +4,14 @@ import { Typography } from '../../../components';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+  margin-bottom: 55px;
+`;
+
+export const Description = styled(Typography.Body)`
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19px;
+  margin-bottom: 32px;
 `;
 
 export const RatingBar = styled.div`

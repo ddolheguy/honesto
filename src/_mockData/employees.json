@@ -4,34 +4,39 @@
     "firstName": "Chris",
     "lastName": "Johnson",
     "avatarUrl": "/images/chris.png",
-    "completed": false
+    "completed": false,
+    "inTeam": false
   },
   {
     "id": "2",
     "firstName": "Nico",
     "lastName": "Peroz",
     "avatarUrl": "/images/nico.png",
-    "completed": false
+    "completed": false,
+    "inTeam": false
   },
   {
     "id": "3",
     "firstName": "Peter",
     "lastName": "Moon",
     "avatarUrl": "/images/peter.png",
-    "completed": false
+    "completed": false,
+    "inTeam": true
   },
   {
     "id": "4",
     "firstName": "Denis",
     "lastName": "Denison",
     "avatarUrl": "/images/denis.png",
-    "completed": false
+    "completed": false,
+    "inTeam": true
   },
   {
     "id": "5",
     "firstName": "Paul",
     "lastName": "Cater",
     "avatarUrl": "/images/paul.png",
-    "completed": false
+    "completed": false,
+    "inTeam": false
   }
 ]
