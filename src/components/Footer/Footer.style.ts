@@ -3,7 +3,7 @@ import { theorem } from '../../assets/images';
 import { Body } from '../Typography/Typography';
 
 export const Container = styled.div`
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   right: 0;

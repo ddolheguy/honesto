@@ -1,7 +1,12 @@
 import styled from 'styled-components';
 
-export const Primary = styled.div`
-  background-color: ${({ theme }) => theme.colours.purple};
+type ButtonProps = {
+  disabled?: boolean;
+};
+
+export const Primary = styled.div<ButtonProps>`
+  background-color: ${({ disabled, theme }) =>
+    disabled ? theme.colours.disabled : theme.colours.darkPurple};
   border-radius: 4px;
   color: ${({ theme }) => theme.colours.white};
   cursor: pointer;
@@ -12,8 +17,9 @@ export const Primary = styled.div`
   min-width: 100px;
 `;
 
-export const Secondary = styled.div`
-  background-color: ${({ theme }) => theme.colours.white};
+export const Secondary = styled.div<ButtonProps>`
+  background-color: ${({ disabled, theme }) =>
+    disabled ? theme.colours.disabled : theme.colours.white};
   border: 1px solid ${({ theme }) => theme.colours.grey};
   border-radius: 4px;
   color: ${({ theme }) => theme.colours.black};

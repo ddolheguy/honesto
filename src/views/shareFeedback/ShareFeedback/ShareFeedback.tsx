@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { memo } from 'react';
 import { connect } from 'react-redux';
-import * as Action from '../../../redux/actions/employeeActions';
+import { RouteComponentProps, withRouter } from 'react-router';
 import { RootState } from '../../../redux/reducers/rootReducer';
 import {
   employeeListSelector,
@@ -11,14 +11,7 @@ import * as S from './ShareFeedback.style';
 
 const periods = [{ value: '1', label: 'November 2019' }];
 
-const ShareFeedback: React.FC<Props> = ({
-  isLoading,
-  employees,
-  onFetchEmplpyees
-}) => {
-  useEffect(() => {
-    onFetchEmplpyees();
-  }, [onFetchEmplpyees]);
+const ShareFeedback: React.FC<Props> = ({ employees, isLoading, history }) => {
   return (
     <S.Container>
       <S.SplitRow>
@@ -33,9 +26,7 @@ const ShareFeedback: React.FC<Props> = ({
           <EmployeeRow
             key={index}
             employee={employee}
-            onClickEmployee={() => {
-              console.log('ss');
-            }}
+            onClickEmployee={() => history.push(`/questions/${employee.id}`)}
           />
         ))}
       </S.EmployeeList>
@@ -48,10 +39,6 @@ const mapStateToProps = (state: RootState) => ({
   employees: employeeListSelector(state)
 });
 
-const dispatchToProps = {
-  onFetchEmplpyees: Action.onFetchEmplpyees.request
-};
+type Props = RouteComponentProps & ReturnType<typeof mapStateToProps>;
 
-type Props = ReturnType<typeof mapStateToProps> & typeof dispatchToProps;
-
-export default connect(mapStateToProps, dispatchToProps)(ShareFeedback);
+export default connect(mapStateToProps)(memo(withRouter(ShareFeedback)));

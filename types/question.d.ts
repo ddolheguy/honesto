@@ -1,12 +1,7 @@
 export interface Question {
   id: string;
   title: string;
-  type: string;
-  options?: Option[];
+  type: 'multipleChoice' | 'rating' | 'text';
+  options?: string[];
   description?: string;
-}
-
-interface Option {
-  title: string;
-  message: string;
 }

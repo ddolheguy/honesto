@@ -2,27 +2,18 @@
   {
     "id": "q1",
     "title": "How well did I display courage?",
-    "type": "singleChoice",
+    "type": "multipleChoice",
     "options": [
-      {
-        "title": "Please Improve",
-        "message": "You may have done one or the following: Maybe you were mostly quiet in meetings and when you had something on your mind, you brought it to the team afterward. Or, you had feedback that would be valuable to go, but you found it too difficult. Or, you had an opportunity to grow by doing something uncomfortable but you didn’t."
-      },
-      {
-        "title": "You Were Good",
-        "message": "You sometimes participate in meetings but you feel that they don’t always bring up important things when they should."
-      },
-      {
-        "title": "You Were Great",
-        "message": "I and others can count on your courage to help the team do what is right."
-      }
+      "Please Improve<br />You may have done one or the following: Maybe you were mostly quiet in meetings and when you had something on your mind, you brought it to the team afterward. Or, you had feedback that would be valuable to go, but you found it too difficult. Or, you had an opportunity to grow by doing something uncomfortable but you didn’t.",
+      "You Were Good<br />You sometimes participate in meetings but you feel that they don’t always bring up important things when they should.",
+      "You Were Great<br />I and others can count on your courage to help the team do what is right."
     ]
   },
   {
     "id": "q2",
     "title": "How well did I scale my work?",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    "type": "scale"
+    "type": "rating"
   },
   {
     "id": "q3",

@@ -2,6 +2,9 @@ import styled from 'styled-components';
 import { Avatar, Typography } from '../../../components';
 
 export const Container = styled.div`
+  position: fixed;
+  left: 0;
+  right: 0%;
   align-items: center;
   background-color: ${({ theme }) => theme.colours.lightGrey};
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
