@@ -13,24 +13,28 @@ const Banner: React.FC<Props> = ({ history, match, onLogout }) => {
         <S.Title>Honesto</S.Title>
         <MenuItem
           title='Share Feedback'
-          isActive={true}
+          isActive={history.location.pathname === ROUTES.SHARE_FEEDBACK}
           notificationCount={2}
           onItemClick={() => history.push(ROUTES.SHARE_FEEDBACK)}
         />
         <MenuItem
           title='My Feedback'
-          isActive={false}
+          isActive={history.location.pathname.startsWith(
+            ROUTES.MY_FEEDBACK.replace('/:employeeId?', '')
+          )}
           notificationCount={8}
-          onItemClick={() => history.push(ROUTES.MY_FEEDBACK)}
+          onItemClick={() =>
+            history.push(ROUTES.MY_FEEDBACK.replace('/:employeeId?', ''))
+          }
         />
         <MenuItem
           title='Team Feedback'
-          isActive={false}
+          isActive={history.location.pathname === ROUTES.TEAM_FEEDBACK}
           onItemClick={() => history.push(ROUTES.TEAM_FEEDBACK)}
         />
         <MenuItem
           title='Teams'
-          isActive={false}
+          isActive={history.location.pathname === ROUTES.TEAMS}
           onItemClick={() => history.push(ROUTES.TEAMS)}
         />
       </S.Row>

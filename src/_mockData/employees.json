@@ -37,6 +37,7 @@
     "lastName": "Cater",
     "avatarUrl": "/images/paul.png",
     "completed": false,
+    "isNew": true,
     "inTeam": false
   }
 ]

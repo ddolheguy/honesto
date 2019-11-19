@@ -4,5 +4,6 @@ export interface Employee {
   readonly lastName: string;
   readonly avatarUrl: string;
   readonly inTeam: boolean;
+  readonly isNew: boolean;
   readonly completed: boolean;
 }

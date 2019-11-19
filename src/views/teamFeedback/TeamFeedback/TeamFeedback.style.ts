@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 import { Typography } from '../../../components';
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  width: 740px;
+`;
 
 export const SplitRow = styled.div`
   display: flex;

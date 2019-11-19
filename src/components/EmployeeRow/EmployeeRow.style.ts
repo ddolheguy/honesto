@@ -5,7 +5,15 @@ export const Name = styled(Typography.H2)`
   color: #59636e;
 `;
 
-export const Container = styled.div`
+type ContainerProps = {
+  isSelected: boolean;
+  showSubmission: boolean;
+};
+
+export const Container = styled.div<ContainerProps>`
+  background-color: ${({ isSelected, theme }) =>
+    isSelected ? theme.colours.lightGrey : theme.colours.white};
+  cursor: ${({ showSubmission }) => (showSubmission ? 'default' : 'pointer')};
   display: flex;
   align-items: center;
   justify-content: space-between;

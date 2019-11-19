@@ -23,7 +23,13 @@ const ShareFeedback: React.FC<Props> = ({ employees, history }) => {
           <EmployeeRow
             key={index}
             employee={employee}
-            onClickEmployee={() => history.push(`/questions/${employee.id}`)}
+            onClickEmployee={() =>
+              history.push(
+                employee.completed
+                  ? `/my-feedback/${employee.id}`
+                  : `/questions/${employee.id}`
+              )
+            }
           />
         ))}
       </S.EmployeeList>
