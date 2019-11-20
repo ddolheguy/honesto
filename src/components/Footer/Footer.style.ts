@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { theorem } from '../../assets/images';
 import { Body } from '../Typography/Typography';
 
 export const Container = styled.div`
@@ -16,7 +15,7 @@ export const Container = styled.div`
 `;
 
 export const TheoremLogo = styled.img.attrs({
-  src: theorem
+  src: '/images/theorem.png'
 })`
   height: 16px;
   width: 98px;

@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { logo } from '../../../assets/images';
 import { Typography } from '../../../components';
 
 export const Container = styled.div`
@@ -72,7 +71,7 @@ export const LoginContent = styled.div`
 `;
 
 export const Logo = styled.img.attrs({
-  src: logo
+  src: '/images/logo.png'
 })`
   height: 70px;
   margin-bottom: 34px;
