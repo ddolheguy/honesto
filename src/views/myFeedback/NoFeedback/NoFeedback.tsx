@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import * as S from './NoFeedback.style';
 
 const NoFeedback: React.FC = () => {
@@ -17,4 +17,4 @@ const NoFeedback: React.FC = () => {
   );
 };
 
-export default NoFeedback;
+export default memo(NoFeedback);
