@@ -44,8 +44,10 @@ const Banner: React.FC<Props> = ({
         />
         <MenuItem
           title='Teams'
-          isActive={history.location.pathname === ROUTES.TEAMS}
-          onItemClick={() => history.push(ROUTES.TEAMS)}
+          isActive={false}
+          onItemClick={() => {
+            console.log('Team not implemented');
+          }}
         />
       </S.Row>
 
