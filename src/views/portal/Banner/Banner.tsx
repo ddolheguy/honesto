@@ -3,10 +3,20 @@ import { connect } from 'react-redux';
 import { RouteComponentProps, withRouter } from 'react-router';
 import { ROUTES } from '../../../config/routes';
 import * as Actions from '../../../redux/actions/authenticationActions';
+import { RootState } from '../../../redux/reducers/rootReducer';
+import {
+  availableShareEmployeesSelector,
+  completedEmployeeListSelector
+} from '../../../redux/selectors/employee';
 import MenuItem from '../MenuItem/MenuItem';
 import * as S from './Banner.style';
 
-const Banner: React.FC<Props> = ({ history, match, onLogout }) => {
+const Banner: React.FC<Props> = ({
+  history,
+  onLogout,
+  shareEmployeeCount,
+  completeEmployeeCount
+}) => {
   return (
     <S.Container>
       <S.Row>
@@ -14,7 +24,7 @@ const Banner: React.FC<Props> = ({ history, match, onLogout }) => {
         <MenuItem
           title='Share Feedback'
           isActive={history.location.pathname === ROUTES.SHARE_FEEDBACK}
-          notificationCount={2}
+          notificationCount={shareEmployeeCount}
           onItemClick={() => history.push(ROUTES.SHARE_FEEDBACK)}
         />
         <MenuItem
@@ -22,7 +32,7 @@ const Banner: React.FC<Props> = ({ history, match, onLogout }) => {
           isActive={history.location.pathname.startsWith(
             ROUTES.MY_FEEDBACK.replace('/:employeeId?', '')
           )}
-          notificationCount={8}
+          notificationCount={completeEmployeeCount}
           onItemClick={() =>
             history.push(ROUTES.MY_FEEDBACK.replace('/:employeeId?', ''))
           }
@@ -58,10 +68,19 @@ const Banner: React.FC<Props> = ({ history, match, onLogout }) => {
   );
 };
 
+const mapStateToProps = (state: RootState) => ({
+  shareEmployeeCount: availableShareEmployeesSelector(state, {
+    isTeam: false
+  }),
+  completeEmployeeCount: completedEmployeeListSelector(state).length
+});
+
 const mapDispatch = {
   onLogout: Actions.onLogout.request
 };
 
-type Props = RouteComponentProps & typeof mapDispatch & {};
+type Props = RouteComponentProps &
+  ReturnType<typeof mapStateToProps> &
+  typeof mapDispatch;
 
-export default connect(null, mapDispatch)(memo(withRouter(Banner)));
+export default connect(mapStateToProps, mapDispatch)(memo(withRouter(Banner)));

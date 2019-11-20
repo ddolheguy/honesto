@@ -37,7 +37,7 @@ export const SingleQuestion: React.FC<Props> = ({
   };
 
   const skipAnswer = () => {
-    saveAnswer(false, undefined);
+    saveAnswer(true, undefined);
     onNext();
   };
 

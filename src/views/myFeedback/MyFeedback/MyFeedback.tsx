@@ -4,6 +4,8 @@ import { RouteComponentProps, withRouter } from 'react-router';
 import EmployeeRow from '../../../components/EmployeeRow/EmployeeRow';
 import { RootState } from '../../../redux/reducers/rootReducer';
 import { completedEmployeeListSelector } from '../../../redux/selectors/employee';
+import NoFeedback from '../NoFeedback/NoFeedback';
+import QuestionResults from '../QuestionResults/QuestionResults';
 import * as S from './MyFeedback.style';
 
 const periods = [{ value: '1', label: 'November 2019' }];
@@ -18,6 +20,11 @@ const MyFeedback: React.FC<Props> = ({ employees, match }) => {
       setSelectedEmployeeId(employees[0].id);
     }
   }, [employees, match]);
+
+  if (employees.length === 0) {
+    return <NoFeedback />;
+  }
+
   return (
     <S.Container>
       <S.SplitRow>
@@ -31,18 +38,23 @@ const MyFeedback: React.FC<Props> = ({ employees, match }) => {
         </S.Row>
       </S.SplitRow>
       <S.Content>
-        <S.FeedbackTitle>Feedback Received</S.FeedbackTitle>
-        <S.EmployeeList>
-          {employees.map((employee, index) => (
-            <EmployeeRow
-              key={index}
-              isSelected={employee.id === selectedEmployeeId}
-              employee={employee}
-              showSubmission={false}
-              onClickEmployee={() => setSelectedEmployeeId(employee.id)}
-            />
-          ))}
-        </S.EmployeeList>
+        <div>
+          <S.FeedbackTitle>Feedback Received</S.FeedbackTitle>
+          <S.EmployeeList>
+            {employees.map((employee, index) => (
+              <EmployeeRow
+                key={index}
+                isSelected={employee.id === selectedEmployeeId}
+                employee={employee}
+                showSubmission={false}
+                onClickEmployee={() => setSelectedEmployeeId(employee.id)}
+              />
+            ))}
+          </S.EmployeeList>
+        </div>
+        {selectedEmployeeId ? (
+          <QuestionResults employeeId={selectedEmployeeId} />
+        ) : null}
       </S.Content>
     </S.Container>
   );

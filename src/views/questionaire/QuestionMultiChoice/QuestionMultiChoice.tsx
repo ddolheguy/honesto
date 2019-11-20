@@ -17,9 +17,9 @@ const QuestionMultiChoice: React.FC<Props> = ({
         question.options.map((option, index) => (
           <S.Option
             key={index}
-            answered={answerValue === index}
+            answered={answerValue === index + 1}
             dangerouslySetInnerHTML={{ __html: option }}
-            onClick={() => onAnswer(`${index}`)}
+            onClick={() => onAnswer(`${index + 1}`)}
           />
         ))}
     </S.Container>

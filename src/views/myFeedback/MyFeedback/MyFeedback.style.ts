@@ -43,7 +43,18 @@ export const StyledSelect = styled(Select)`
 
 export const Content = styled.div`
   border: 1px solid rgba(172, 177, 182, 0.33);
+  display: flex;
+  align-items: flex-start;
   margin-top: 21px;
+
+  > div:nth-child(1) {
+    border-right: 1px solid rgba(172, 177, 182, 0.33);
+    min-width: 350px;
+    width: 40%;
+  }
+  > div:nth-child(2) {
+    width: 60%;
+  }
 `;
 
 export const FeedbackTitle = styled(Typography.Body)`
@@ -56,6 +67,5 @@ export const FeedbackTitle = styled(Typography.Body)`
 
 export const EmployeeList = styled.div`
   border-top: 1px solid rgba(172, 177, 182, 0.33);
-  border-right: 1px solid rgba(172, 177, 182, 0.33);
   margin-top: 14px;
 `;

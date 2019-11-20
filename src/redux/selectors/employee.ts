@@ -33,6 +33,11 @@ export const employeeListSelector = createSelector(
   }
 );
 
+export const availableShareEmployeesSelector = createSelector(
+  employeeListSelector,
+  state => state.filter(c => !c.completed).length
+);
+
 export const completedEmployeeListSelector = createSelector(
   employeeStateSelector,
   state => {

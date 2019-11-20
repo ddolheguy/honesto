@@ -40,7 +40,7 @@ export const Month = styled(Typography.Body)`
 `;
 
 export const Period = styled(Typography.Body)`
-  color: ${({ theme }) => theme.colours.green};
+  color: ${({ theme }) => theme.colours.lightGreen};
 `;
 
 export const Profile = styled.div`
