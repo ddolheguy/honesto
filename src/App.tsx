@@ -5,7 +5,8 @@ import { ThemeProvider } from 'styled-components';
 import { Footer, ProtectedRoute } from './components';
 import historyService from './services/historyService';
 import { configureStore } from './store';
-import theme, { GlobalStyle } from './theme/theme';
+import { GlobalStyle } from './theme/globalStyles';
+import theme from './theme/theme';
 
 import Login from './views/authentication/Login/Login';
 import Portal from './views/portal/Portal/Portal';
