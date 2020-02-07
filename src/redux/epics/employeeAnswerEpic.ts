@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon';
 import { ActionsObservable, Epic, StateObservable } from 'redux-observable';
 import { of } from 'rxjs';
-import { filter, mergeMap } from 'rxjs/operators';
+import { filter, switchMap } from 'rxjs/operators';
 import { isActionOf } from 'typesafe-actions';
 import { EmployeeAnswers } from '../../../types/question';
 import localStorageService from '../../services/localStorageService';
@@ -19,7 +19,7 @@ export const onFetchAnswersEpic: Epic = (
 ) =>
   action$.pipe(
     filter(isActionOf(onFetchQuestions.request)),
-    mergeMap(({ payload }) => {
+    switchMap(({ payload }) => {
       try {
         const response = localStorageService.getItem(`employee-${payload}`);
         const employeeAnswers = response
@@ -40,7 +40,7 @@ export const onSaveAnswerEpic: Epic = (
 ) =>
   action$.pipe(
     filter(isActionOf(onSaveAnswer.request)),
-    mergeMap(({ payload }) => {
+    switchMap(({ payload }) => {
       try {
         const { employeeId, answer } = payload;
         if (state$.value.entities.employeeAnswers.state !== 'SUCCESS') {

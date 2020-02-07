@@ -1,6 +1,6 @@
 import { ActionsObservable, Epic } from 'redux-observable';
 import { of } from 'rxjs';
-import { filter, mergeMap } from 'rxjs/operators';
+import { filter, switchMap } from 'rxjs/operators';
 import { isActionOf } from 'typesafe-actions';
 import { ROUTES } from '../../config/routes';
 import { logout, setAuthToken } from '../../services/authenticationService';
@@ -16,7 +16,7 @@ export const onAuthenticateEpic: Epic = (
 ) =>
   action$.pipe(
     filter(isActionOf(onAuthenticate.request)),
-    mergeMap(() => {
+    switchMap(() => {
       try {
         setAuthToken('SomeBearerTokenGoesHere');
         historyService.push(ROUTES.PORTAL);
@@ -32,7 +32,7 @@ export const onLogoutEpic: Epic = (
 ) =>
   action$.pipe(
     filter(isActionOf(onLogout.request)),
-    mergeMap(() => {
+    switchMap(() => {
       try {
         logout();
         historyService.push(ROUTES.LOGIN);

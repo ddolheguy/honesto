@@ -1,6 +1,6 @@
 import { ActionsObservable, Epic } from 'redux-observable';
 import { of } from 'rxjs';
-import { filter, mergeMap } from 'rxjs/operators';
+import { filter, switchMap } from 'rxjs/operators';
 import { isActionOf } from 'typesafe-actions';
 import { Question } from '../../../types/question';
 import questionsMockData from '../../_mockData/questions.json';
@@ -11,7 +11,7 @@ export const onFetchQuestionsEpic: Epic = (
 ) =>
   action$.pipe(
     filter(isActionOf(onFetchQuestions.request)),
-    mergeMap(() => {
+    switchMap(() => {
       try {
         const questions = questionsMockData as Question[];
         return of(onFetchQuestions.success(questions));

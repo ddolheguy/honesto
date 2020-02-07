@@ -1,6 +1,6 @@
 import { ActionsObservable, Epic } from 'redux-observable';
 import { of } from 'rxjs';
-import { filter, mergeMap } from 'rxjs/operators';
+import { filter, switchMap } from 'rxjs/operators';
 import { isActionOf } from 'typesafe-actions';
 import { Employee } from '../../../types/employee';
 import { EmployeeAnswers } from '../../../types/question';
@@ -19,7 +19,7 @@ export const onFetchEmployeesEpic: Epic = (
 ) =>
   action$.pipe(
     filter(isActionOf(onFetchEmplpyees.request)),
-    mergeMap(() => {
+    switchMap(() => {
       try {
         const employees = employeeMockData.map(employee => {
           const response = localStorageService.getItem(
@@ -46,7 +46,7 @@ export const onEmployeeQuestionsCompleteEpic: Epic = (
 ) =>
   action$.pipe(
     filter(isActionOf(onEmployeeQuestionsComplete.request)),
-    mergeMap(({ payload }) => {
+    switchMap(({ payload }) => {
       try {
         const employee = { ...payload, completed: true } as Employee;
 
